@@ -21,6 +21,7 @@ public class Consultation extends HttpServlet {
 	 */
 	public Consultation() {
 		super();
+		int x = 1;
 		// TODO Auto-generated constructor stub
 	}
 
