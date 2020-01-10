@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" errorPage="error/error500.jsp" %>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="fr.m2i.bibliocommon.bo.Livre"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +66,35 @@
 										<td>java bean java bien en bouchon javascript 3</td>
 										<td>HTML</td>
 									</tr>
+									
+									<c:forEach items="${requestScope.livres }" var="livre">
+										<tr>
+											<td><c:out value="${livre.id }"></c:out></td>
+											<td><c:out value="${livre.isbn }"></c:out></td>
+											<td><c:out value="${livre.titre }"></c:out></td>
+											<td>
+												<c:forEach items="${livre.auteurs }" var="auteur">
+													<c:out value="${auteur.prenom }"></c:out> <c:out value="${auteur.nom }"></c:out> 	
+													<br />
+												</c:forEach>
+											</td>
+										</tr>
+									</c:forEach>
+									<%
+									/* for (Livre livre : (List<Livre>) request.getAttribute("livres")) {
+										out.write("<tr>");
+										out.write("<td>" + livre.getId() + "</td>");
+										out.write("<td>" + livre.getIsbn() + "</td>");
+										out.write("<td>" + livre.getTitre() + "</td>");
+										out.write("<td>" + "auteur" + "</td>");
+										out.write("</tr>");
+									}	 */
+									
+									
+									%>
+									
+									
+									
 								</tbody>
 							</table>
 							<button onclick="getLivresAjax()">chercher livres AJAX</button>
