@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>inscription</title>
+<link rel="stylesheet" type="text/css" href="css/biblioWeb.css" />
+<link rel="stylesheet" type="text/css" href="css/biblioWebPrint.css"
+	media="print" />
+<link rel="stylesheet" type="text/css" href="css/biblioWebMobile.css" />
+<script type="application/javascript" src="js/biblio.js"></script>
+
+</head>
+<body onload="initPage()">
+	<div id="page">
+		<header>
+			<img id="logo" src="images/logo.png" />
+		</header>
+		<nav>
+			<ul>
+				<li title="retour accueil"><a href="index.html">Accueil</a></li>
+				<li title="s'inscrire"><a href="inscription.html">Inscription</a></li>
+				<li title="rechercher"><a href="consultation.html">Recherche</a>
+					<ul>
+						<li><a href="#">Recherche par isbn</a></li>
+						<li><a href="#">Recherche par auteur</a></li>
+						<li><a href="#">Recherche par titre</a></li>
+					</ul></li>
+				<li title="nous contacter"><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		<div id="content">
+			<div id="left">left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; titi</div>
+			<div id="center">
+
+				<h1>Inscription au site</h1>
+				<form action="#" id="inscriptionForm" method="get">
+					<fieldset>
+						<legend id="identite">Vous</legend>
+						<p>
+							<label for="civilite">civilit&eacute;</label> <input type="radio"
+								id="civiliteM" name="civilite" value="M" required="required" />Mr
+							<input type="radio" id="civiliteMME" name="civilite" value="Mme" />Mme
+						</p>
+
+						<p>
+							<label class="mandatory" title="saisir votre nom" for="nom">nom</label>
+							<input type="text" id="nom" name="nom"
+								placeholder="saisir votre nom" required="required" />
+						</p>
+						<p>
+							<label class="mandatory" for="prenom">pr&eacute;nom</label> <input
+								type="text" id="prenom" name="prenom"
+								placeholder="saisir votre pr&eacute;nom" required="required"
+								onkeyup="changerCase(event,'toLower')" />
+						</p>
+						<p>
+							<label for="enfants">enfants</label> <input type="checkbox"
+								id="enfants" name="enfants" onchange="majZoneEnfant(this)" />
+							oui
+						</p>
+						<div id="zoneEnfants">
+							<p>
+								<label for="nbrEnfants">nombre enfants</label> <input
+									onchange="majZoneInfoEnfant(this)" type="number"
+									id="nbrEnfants" name="nbrEnfants" min="1" />
+							</p>
+
+						</div>
+						<p>
+							<label for="dateDeNaissance">date de naissance</label> <input
+								type="date" id="dateDeNaissance" name="dateDeNaissance"
+								min="2015-07-30" />
+						</p>
+						<p>
+							<label for="dateDeNaissanceHeure">date de naissance et
+								heure</label> <input type="datetime-local" id="dateDeNaissanceHeure"
+								name="dateDeNaissanceHeure" />
+						</p>
+						<p>
+							<label for="couleurFavorite">couleur favorite</label> <input
+								type="color" id="couleurFavorite" name="couleurFavorite"
+								onchange="majColor(this)" />
+						</p>
+						<p>
+							<label for="email">email</label> <input type="email" id="email"
+								name="email" />
+						</p>
+						<p>
+							<label class="mandatory" for="password">password</label> <input
+								type="password" id="password" name="password"
+								required="required" onchange="validerPassword(this)" />
+						</p>
+						<p>
+							<label class="mandatory" for="confirmPassword">confirmation
+								du password</label> <input type="password" id="confirmPassword"
+								name="confirmPassword" required="required"
+								onchange="validerPassword(this)" /><img id="oeilPassword"
+								onclick="changerOeil(this)" class="oeil" src="images/oeil.png" />
+							<span id="erreur" class="erreur"></span>
+						</p>
+						<p>
+							<label for="fichier">fichier</label> <input type="file"
+								id="fichier" name="fichier" />
+						</p>
+						<p>
+							<label for="fichierMultiple">fichier Multiple</label> <input
+								type="file" id="fichierMultiple" name="fichierMultiple"
+								multiple="multiple" />
+						</p>
+						<p>
+							<label for="urlSitePerso">site Perso</label> <input type="url"
+								id="urlSitePerso" name="urlSitePerso" />
+						</p>
+						<p>
+							<label for="intervalle">intervalle</label> <input type="range"
+								id="intervalle" name="intervalle" step="2" />
+						</p>
+						<p>
+							<label for="tel">tel</label> <input type="tel" id="tel"
+								name="tel" placeholder="ex 06-02-03-04-05"
+								pattern="([0-9]{2}-){4}[0-9]{2}" />
+						</p>
+						<p>
+							<label for="tel">button</label> <input type="button"
+								value="clickez dessus" onclick="alert('on m a clicke dessus')" />
+						</p>
+						<p>
+							<label for="search">search</label> <input type="search"
+								onkeyup="changerCase(event,'toUpper')" />
+						</p>
+						<p>
+							<input name="cache" value="champ cache" type="hidden" />
+						</p>
+					</fieldset>
+
+					<fieldset>
+						<legend>Adresse</legend>
+						<p>
+							<label for="pays"></label> <select name="pays">
+								<option value=""></option>
+								<optgroup label="europe">
+									<option value="Fr">France</option>
+									<option value="It">Italie</option>
+								</optgroup>
+								<optgroup label="Asie">
+									<option value="Ph">Philippines</option>
+									<option value="Cn">Chine</option>
+								</optgroup>
+								<optgroup label="Afrique">
+									<option value="Cv">Cap vert</option>
+								</optgroup>
+							</select>
+						</p>
+
+
+						<div id="villes">
+							<ul id="listeGauche" ondrop="drop(event)" ondragover="allowDrop(event)">
+								<li id="antibes" value="antibes" draggable="true" ondragstart="drag(event)">Antibes</li>
+								<li id="nice" value="nice" draggable="true" ondragstart="drag(event)">Nice</li>
+							</ul>
+							<button value="listeGauche" onclick="passerLis(this)">&lt;=</button>
+							<button value="listeDroite" onclick="passerLis(this)">=&gt;</button>
+							<ul id="listeDroite" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+						</div>
+						<p>
+							<label for="zipCode">zip code</label> <input type="text"
+								id="zipCode" name="zipCode" pattern="[0-9][0-9][0-9][0-9][0-9]" />
+						</p>
+					</fieldset>
+					<fieldset>
+						<legend>Remarques</legend>
+						<textarea rows="10" cols="40" name="remarques"
+							style="resize: vertical;"></textarea>
+					</fieldset>
+					<input type="reset" /> <input type="submit" value="Envoyer" />
+				</form>
+				<a href="#page">haut</a>
+			</div>
+			<div id="right">right</div>
+		</div>
+		<footer>footer</footer>
+	</div>
+</body>
+</html>
