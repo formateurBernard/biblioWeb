@@ -13,7 +13,6 @@
 		<div id="content">
 			<jsp:include page="left/left.jsp"></jsp:include>
 			<div id="center">
-
 				<h1>Inscription au site</h1>
 				<form action="inscription" id="inscriptionForm" method="post">
 					<fieldset>

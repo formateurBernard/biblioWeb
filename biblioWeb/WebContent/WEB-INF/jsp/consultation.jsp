@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8" errorPage="error/error500.jsp" %>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="fr.m2i.bibliocommon.bo.Livre"%>
-<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +16,7 @@
 	<div id="page">
 		<jsp:include page="header/header.jsp"></jsp:include>
 		<jsp:include page="nav/nav.jsp"></jsp:include>
-		<nav aria-label="breadcrumb">
+		<nav aria-label="breadcrumb" style="z-index: 0">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Consultation</li>
@@ -28,6 +26,9 @@
 			<jsp:include page="left/left.jsp"></jsp:include>
 			<div id="center">
 				<h1>Consultation</h1>
+						<c:if  test='${not empty pageContext.request.userPrincipal && pageContext.request.isUserInRole("admin")}'>
+								<a href="livreServlet?action=ajouter">ajouter un livre</a>
+						</c:if>
 				<div id="carouselExampleIndicators" class="carousel slide"
 					data-ride="carousel">
 					<ol class="carousel-indicators">
